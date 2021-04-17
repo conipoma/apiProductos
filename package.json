@@ -6,6 +6,7 @@
   "dependencies": {
     "bootstrap-icons": "^1.4.1",
     "express": "^4.17.1",
+    "mongoose": "^5.12.4",
     "morgan": "^1.10.0"
   },
   "devDependencies": {
