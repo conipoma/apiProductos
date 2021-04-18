@@ -24,7 +24,8 @@ router.get('/products/:searchString', function(req, res) {
         console.log('GET /products/:searchString' + req.params.searchString);
         if (isPalindromo(req.params.searchString)) {
             product.promotion = true
-            product.reducedPrice = product.price / 2;
+            product.originalPrice = product.price;
+            product.price = product.price / 2;
         }
             res.status(200).jsonp(product);
         });
@@ -48,7 +49,8 @@ router.get('/products/:searchString', function(req, res) {
 
 function reducePrice(productos){
     productos.forEach(function(producto, index) {
-        producto.reducedPrice = producto.price / 2;
+        producto.originalPrice = producto.price;
+        producto.price = producto.price / 2;
         producto.promotion = true
     }); 
 }
