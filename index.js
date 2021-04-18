@@ -19,6 +19,10 @@ app.use(morgan('dev'));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
+// Requerimos cors
+const cors = require('cors');
+app.use(cors());
+
 // routes
 
 app.use(require('./routes/productos'));

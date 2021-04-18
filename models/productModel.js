@@ -7,6 +7,7 @@ exports = module.exports = function(app, mongoose) {
 		description: 	{ type: String },
 		image:  		{ type: String },
 		price: 			{ type: Number }
+
 	}, { collection : 'products' }
 );
 
