@@ -9,10 +9,11 @@ app.set('port', process.env.PORT || 3000);
 app.set('json spaces', 2);
 
 // db connection
-mongoose.connect("mongodb://localhost:27017/promotions", {
+mongoose.connect("mongodb://desafiowalmartmongo.mongo.cosmos.azure.com:10255/promotions", {
     "auth": { "authSource": "admin" },
-    "user": "productListUser",
-    "pass": "productListPassword"
+    "server": {ssl: true},
+    "user": "desafiowalmartmongo",
+    "pass": "JahUDigH1CCGVQA7majFwIpAXkmeIuwUrqMDiRWoENceyWYRAi4paOF3FsuFBIcBMTQyFi85DaszM2NNB73t4Q=="
 });
 
 // middlewares
