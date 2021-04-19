@@ -2,10 +2,9 @@ const { Router, query } = require('express');
 const router = Router();
 const mongoose = require('mongoose');
 const Product  = mongoose.model('products');
-// const products = require('../jsons.json');
 
+// Products route 
 router.get('/products', function(req, res) {
-	console.log('entro')
     Product.find(function(err, product) {
     if(err) res.send(500, err.message);
 
@@ -30,28 +29,26 @@ router.get('/products/:searchString', function(req, res) {
             res.status(200).jsonp(product);
         });
     }else {
-        var query = {$or:[{brand:{$regex: req.params.searchString, $options: 'i'}},{description:{$regex: req.params.searchString, $options: 'i'}}]}
+        var query = {$or:[{brand:{$regex: req.params.searchString, $options: 'i'}},{description:{$regex: req.params.searchString, $options: 'i'}}]};
      
         Product.find(query).lean().exec(function(err, product) {
             if(err) return res.send(500, err.message);
-        
-            console.log('GET /products/:searchString' + req.params.searchString);
+                console.log('GET /products/:searchString' + req.params.searchString);
             
             if (isPalindromo(req.params.searchString)) {
-                reducePrice(product)
-                
-            }
+                reducePrice(product) 
+            };
                 res.status(200).jsonp(product);
             });
     }
 });
 
-
-function reducePrice(productos){
-    productos.forEach(function(producto, index) {
-        producto.originalPrice = producto.price;
-        producto.price = producto.price / 2;
-        producto.promotion = true
+// Reduce Price Function
+function reducePrice(productDiscount){
+    productDiscount.forEach(function(product, index) {
+        product.originalPrice = product.price;
+        product.price = product.price / 2;
+        product.promotion = true
     }); 
 }
 
@@ -59,13 +56,13 @@ function reducePrice(productos){
 // ID - Palindromo Function 
 function isPalindromo(numero = 0){
     numero = numero.toString();
-    var alReves = numero.split("").reverse().join("");
-    if (numero === alReves) {
+    var backwards = numero.split("").reverse().join("");
+    if (numero === backwards) {
         return true;
     } else {
         return false
-    }
-}
+    };
+};
 
 
 module.exports = router, mongoose;
