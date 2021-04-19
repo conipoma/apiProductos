@@ -3,7 +3,7 @@ const router = Router();
 const mongoose = require('mongoose');
 const Product  = mongoose.model('products');
 
-// Products route 
+// Get all Products 
 router.get('/products', function(req, res) {
     Product.find(function(err, product) {
     if(err) res.send(500, err.message);
@@ -13,7 +13,7 @@ router.get('/products', function(req, res) {
 	});
 });
 
-// Get product by ID, description and brand
+// Get product by ID, description or brand
 router.get('/products/:searchString', function(req, res) {
 	const regex = /^[0-9]*$/;
     if(regex.test(req.params.searchString)) {
@@ -53,11 +53,11 @@ function reducePrice(productDiscount){
 }
 
 
-// ID - Palindromo Function 
-function isPalindromo(numero = 0){
-    numero = numero.toString();
-    var backwards = numero.split("").reverse().join("");
-    if (numero === backwards) {
+//Palindromo Function 
+function isPalindromo(number = 0){
+    number = number.toString();
+    var backwards = number.split("").reverse().join("");
+    if (number === backwards) {
         return true;
     } else {
         return false

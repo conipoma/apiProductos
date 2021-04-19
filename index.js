@@ -25,7 +25,7 @@ const cors = require('cors');
 app.use(cors());
 
 // routes
-app.use(require('./routes/productos'));
+app.use(require('./routes/products'));
 
 // starting the server
 app.listen(app.get('port'), () => {
