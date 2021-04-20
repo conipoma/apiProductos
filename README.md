@@ -8,7 +8,7 @@ https://desafiowalmartapi.azurewebsites.net
 
 
 ## Despliegue local
-Para correr la Api de deben hacer los siguientes pasos: 
+Para correr la Api se deben hacer los siguientes pasos: 
 
 ```
 npm install 
@@ -75,5 +75,5 @@ Aquellas búsquedas que sean palíndromas los elementos encontrados se retornar�
 ```
 
 ### Deuda tácnica
-- Pruebas automáticas.
+- Pruebas unitarias.
 - Parametrización de conexión a Mongodb. 
